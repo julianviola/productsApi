@@ -22,8 +22,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //Route::get('/products', [ProductController::class, 'index']);
 
+Route::get('/', function () {
+    return view('api.documentation');
+});
+
 Route::prefix('v1')->group(function() {
     Route::apiresource('/products', ProductController::class);
     Route::get('/products/search/{name}', [ProductController::class, 'search']);
+    
+    
+    // /api/v1/documentation
+    Route::get('/documentation', function () {
+        return view('api.documentation');
+    });
 });
 
